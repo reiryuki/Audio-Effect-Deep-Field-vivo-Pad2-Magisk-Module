@@ -34,6 +34,7 @@
   `vafx`
 
 ## Optionals
+- https://t.me/androidryukimodsdiscussions/242859
 - Global: https://t.me/androidryukimodsdiscussions/60861
 - Stream: https://t.me/androidryukimodsdiscussions/26764
 
