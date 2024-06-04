@@ -10,6 +10,7 @@
 
 ## Sources
 - https://dumps.tadiphone.dev/dumps/vivo/dpd2221 sys_mssi_t_64_cn_armv82_wifi-user-13-TP1A.220624.014-eng.compil.20240306.211224-release-keys
+- libmagiskpolicy.so: Magisk-R65C33E4F-kitsune(27001).apk
 
 ## Screenshots
 - https://t.me/androidryukimods/2236
