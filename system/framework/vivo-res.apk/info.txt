@@ -1,0 +1,3 @@
+# classes.dex: https://dumps.tadiphone.dev/dumps/vivo/dpd2221 sys_mssi_t_64_cn_armv82_wifi-user-13-TP1A.220624.014-eng.compil.20240306.211224-release-keys framework.jar
+# classes2.dex: https://dumps.tadiphone.dev/dumps/vivo/dpd2221 sys_mssi_t_64_cn_armv82_wifi-user-13-TP1A.220624.014-eng.compil.20240306.211224-release-keys vivo-framework.jar
+# Author: Rei Ryuki the Fixer
