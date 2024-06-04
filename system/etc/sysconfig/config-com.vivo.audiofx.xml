@@ -1,1 +1,6 @@
-
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <hidden-api-whitelisted-app package="com.vivo.audiofx"/>
+    <allow-implicit-broadcast action="android.media.AUDIO_BECOMING_NOISY"/>
+    <!--allow-in-power-save package="com.vivo.audiofx"/-->
+</config>
