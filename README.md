@@ -48,6 +48,9 @@
 ## Tested on
 - Android 14 LineageOS ROM
 
+## Known Issue
+- Doesn't work in internal speaker
+
 ## Credits and Contributors
 - https://t.me/viperatmos
 - https://t.me/androidryukimodsdiscussions
