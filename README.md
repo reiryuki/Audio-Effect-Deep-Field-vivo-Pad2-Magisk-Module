@@ -26,7 +26,8 @@
 - Reboot
 - If you are using KernelSU, you need to allow superuser list manually all package name listed in package.txt (and your home launcher app also) (enable show system apps) and reboot afterwards
 - If you are using SUList, you need to allow list manually your home launcher app (enable show system apps) and reboot afterwards
-- Play music first then open and grant root VAFX app
+- Play music first and open Audio Effect app via Equalizer option in your Music app settings
+- OR you can play music first then open and grant root VAFX app instead
 - OR you can also type this command at Terminal/Termux app instead while playing music:
 
   `su`
