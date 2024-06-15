@@ -4,5 +4,6 @@
         <permission name="android.permission.MANAGE_VOICE_KEYPHRASES"/>
         <permission name="android.permission.WRITE_SECURE_SETTINGS"/>
         <permission name="android.permission.INTERACT_ACROSS_USERS"/>
+        <permission name="android.permission.SCHEDULE_EXACT_ALARM"/>
     </privapp-permissions>
 </permissions>
