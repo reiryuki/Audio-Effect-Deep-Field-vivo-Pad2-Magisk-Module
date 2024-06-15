@@ -75,6 +75,12 @@ mkdir -p $DIR
 chmod 0770 $DIR
 chown 1005.1005 $DIR
 
+# directory
+DIR=/data/bbklog/audio_dump
+mkdir -p $DIR
+chmod 0770 $DIR
+chown 1005.1005 $DIR
+
 # permission
 chmod 0751 $MODPATH/system/bin
 FILES=`find $MODPATH/system/bin -type f`

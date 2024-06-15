@@ -290,10 +290,20 @@ done
 FILES="/framework/vivo-res.apk
        /lib64/libthemeicon_vivolog.so
        /lib64/libthemeicon.so"
+#       /lib64/libmars-service_jni.so
+#       /lib64/libmars-service.so
+#       /lib64/libmars-featureclient.so
+#       /lib64/libmars-audioparams.so
+#       /lib64/libvcode_nc.so
 file_check_system
 if [ "$LIST32BIT" ]; then
   FILES="/lib/libthemeicon_vivolog.so
          /lib/libthemeicon.so"
+#         /lib/libmars-service_jni.so
+#         /lib/libmars-service.so
+#         /lib/libmars-featureclient.so
+#         /lib/libmars-audioparams.so
+#         /lib/libvcode_nc.so
   file_check_system
 fi
 
@@ -380,10 +390,20 @@ if echo "$PROP" | grep -q g; then
   sed -i 's|#g||g' $FILE
   ui_print " "
 fi
-if [ "`grep_prop vafx.game $OPTIONALS`" != 0 ]; then
-  sed -i 's|#x||g' $FILE
+if [ "`grep_prop vafx.voice $OPTIONALS`" != 0 ]; then
+  ui_print "- libvoicegain.so will be applied to voice_call stream"
+  sed -i 's|#h||g' $FILE
+  ui_print " "
 else
-  ui_print "- Does not use VAFX Game rerouting & patch stream"
+  ui_print "- Does not apply libvoicegain.so to voice_call stream"
+  ui_print " "
+fi
+if [ "`grep_prop vafx.game $OPTIONALS`" != 0 ]; then
+  ui_print "- libvafx_gfx.so will be applied to rerouting & patch stream"
+  sed -i 's|#x||g' $FILE
+  ui_print " "
+else
+  ui_print "- Does not apply libvafx_gfx.so to rerouting & patch stream"
   ui_print " "
 fi
 

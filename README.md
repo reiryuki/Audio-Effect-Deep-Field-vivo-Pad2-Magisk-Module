@@ -6,11 +6,13 @@
 
 ## Descriptions
 - Equalizer soundfx ported from vivo Pad2 (DPD2221) and integrated as a Magisk Module for all supported and rooted devices with Magisk
+- Deep Field is only work when earphone is connected
 - Global type soundfx
+- libvafx_cc_sfx.so, libvafx_spacefx.so, & libvafx_spkr_sfx.so can only be activated with post process stream mode (READ Optionals bellow!)
 
 ## Sources
 - https://dumps.tadiphone.dev/dumps/vivo/dpd2221 sys_mssi_t_64_cn_armv82_wifi-user-13-TP1A.220624.014-eng.compil.20240306.211224-release-keys
-- libmagiskpolicy.so: Magisk-R65C33E4F-kitsune(27001).apk
+- libmagiskpolicy.so: Kitsune Mask R65C33E4F
 
 ## Screenshots
 - https://t.me/androidryukimods/2236
@@ -40,6 +42,7 @@
 - Stream: https://t.me/androidryukimodsdiscussions/26764
 
 ## Troubleshootings
+- https://t.me/androidryukimodsdiscussions/242859
 - Global: https://t.me/androidryukimodsdiscussions/29836
 
 ## Support & Bug Report
@@ -48,9 +51,6 @@
 
 ## Tested on
 - Android 14 LineageOS ROM
-
-## Known Issue
-- Doesn't work in internal speaker
 
 ## Credits and Contributors
 - https://t.me/viperatmos

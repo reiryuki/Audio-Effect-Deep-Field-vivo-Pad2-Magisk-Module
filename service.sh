@@ -102,6 +102,10 @@ else
   done
 fi
 
+# settings
+settings put global audiopreference_exit 1
+settings put global vafxea_get_switch 1
+
 # grant
 PKG=com.vivo.audiofx
 pm grant $PKG android.permission.RECORD_AUDIO
@@ -133,6 +137,7 @@ PKG=com.reiryuki.vafx
 appops set $PKG SYSTEM_ALERT_WINDOW allow
 if [ "$API" -ge 33 ]; then
   pm grant $PKG android.permission.POST_NOTIFICATIONS
+  appops set $PKG ACCESS_RESTRICTED_SETTINGS allow
 fi
 
 # audio flinger
