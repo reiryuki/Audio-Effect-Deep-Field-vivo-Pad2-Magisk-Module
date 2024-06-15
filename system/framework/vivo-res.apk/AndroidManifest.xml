@@ -20,13 +20,9 @@
 	</original-package>
 	<application
 		android:hasCode="true"
-		android:persistent="true"
 		android:extractNativeLibs="true"
 		>
 	</application>
-	<eat-comment
-		>
-	</eat-comment>
 	<permission
 		android:name="android.permission.ADVANCED_WIDGET_API"
 		>
