@@ -307,6 +307,13 @@ if [ "$LIST32BIT" ]; then
   file_check_system
 fi
 
+# new vafx
+if [ "`grep_prop vafx.new $OPTIONALS`" == 0 ]; then
+  ui_print "- Does not use new VAFX mode"
+  sed -i 's|audiopreference_exit 1|audiopreference_exit 0|g' $MODPATH/service.sh
+  ui_print " "
+fi
+
 # stream mode
 FILE=$MODPATH/.aml.sh
 PROP=`grep_prop stream.mode $OPTIONALS`
