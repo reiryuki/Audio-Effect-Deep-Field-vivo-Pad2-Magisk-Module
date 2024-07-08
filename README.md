@@ -5,9 +5,9 @@
 - The MIT license specified here is for the Magisk Module only, not for vivo apps and blobs.
 
 ## Descriptions
-- Equalizer soundfx ported from vivo Pad2 (DPD2221) and integrated as a Magisk Module for all supported and rooted devices with Magisk
+- Equalizer sound effect ported from vivo Pad2 (DPD2221) and integrated as a Magisk Module for all supported and rooted devices with Magisk
 - Deep Field is only work when earphone is connected
-- Global type soundfx
+- Global type sound effect
 - libvafx_cc_sfx.so, libvafx_spacefx.so, & libvafx_spkr_sfx.so can only be activated with post process stream mode (READ Optionals bellow!)
 
 ## Sources
@@ -18,13 +18,13 @@
 - https://t.me/androidryukimods/2236
 
 ## Requirements
-- ARM64 architecture
 - Android 7 and up
 - Magisk or KernelSU installed
 
 ## Installation Guide & Download Link
 - Install this module https://www.pling.com/p/2161324/ via Magisk app or KernelSU app or Recovery if Magisk installed
 - Install AML Magisk Module https://t.me/androidryukimodsdiscussions/29836 only if using any other else audio mod module
+- If you are using KernelSU, you need to disable Unmount Modules by Default in KernelSU app settings
 - Reboot
 - If you are using KernelSU, you need to allow superuser list manually all package name listed in package.txt (and your home launcher app also) (enable show system apps) and reboot afterwards
 - If you are using SUList, you need to allow list manually your home launcher app (enable show system apps) and reboot afterwards

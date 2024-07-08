@@ -136,7 +136,7 @@ fi
 PKG=com.reiryuki.vafx
 appops set $PKG SYSTEM_ALERT_WINDOW allow
 if [ "$API" -ge 33 ]; then
-  pm grant $PKG android.permission.POST_NOTIFICATIONS
+  pm revoke $PKG android.permission.POST_NOTIFICATIONS
   appops set $PKG ACCESS_RESTRICTED_SETTINGS allow
 fi
 

@@ -56,25 +56,43 @@ else
 fi
 ui_print " "
 
-# architecture
-if [ "$ARCH" == arm64 ]; then
-  ui_print "- $ARCH architecture"
+# bit
+if [ "$IS64BIT" == true ]; then
+  ui_print "- 64 bit architecture"
+  ui_print " "
+  if [ "$LIST32BIT" ]; then
+    ui_print "- 32 bit library support"
+  else
+    ui_print "- Doesn't support 32 bit library"
+    rm -rf $MODPATH/armeabi-v7a $MODPATH/x86\
+     $MODPATH/system*/lib $MODPATH/system*/vendor/lib
+  fi
   ui_print " "
 else
-  ui_print "! Unsupported $ARCH architecture."
-  ui_print "  This module is only for arm64 architecture."
-  abort
+  ui_print "- 32 bit architecture"
+  rm -rf `find $MODPATH -type d -name *64*`
+  ui_print " "
 fi
 
-# bit
-if [ "$LIST32BIT" ]; then
-  ui_print "- 32 bit library support"
-else
-  ui_print "- Doesn't support 32 bit library"
-  rm -rf $MODPATH/armeabi-v7a $MODPATH/x86\
-   $MODPATH/system*/lib $MODPATH/system*/vendor/lib
-fi
+# architecture
+ui_print "- $ARCH architecture"
 ui_print " "
+FILE=$MODPATH/service.sh
+if [ "`grep_prop vafx.ea $OPTIONALS`" == 0 ]; then
+  ui_print "- Does not use Ear-customized sound effects"
+  sed -i -e 's|vafxea_get_switch 1|vafxea_get_switch -1|g'\
+   -e 's|vafxea_get_switch 0|vafxea_get_switch -1|g' $FILE
+  ui_print " "
+else
+  if [ "$ARCH" != arm64 ]; then
+    ui_print "- Ear-customized sound effects is unsupported"
+    ui_print "  in non-arm64 architecture"
+    sed -i -e 's|vafxea_get_switch 1|vafxea_get_switch -1|g'\
+     -e 's|vafxea_get_switch 0|vafxea_get_switch -1|g' $FILE
+    ui_print " "
+  fi
+fi
+
 
 # sdk
 NUM=24
@@ -287,15 +305,18 @@ done
 }
 
 # check
-FILES="/framework/vivo-res.apk
-       /lib64/libthemeicon_vivolog.so
-       /lib64/libthemeicon.so"
-#       /lib64/libmars-service_jni.so
-#       /lib64/libmars-service.so
-#       /lib64/libmars-featureclient.so
-#       /lib64/libmars-audioparams.so
-#       /lib64/libvcode_nc.so
+FILES=/framework/vivo-res.apk
 file_check_system
+if [ "$IS64BIT" == true ]; then
+  FILES="/lib64/libthemeicon_vivolog.so
+         /lib64/libthemeicon.so"
+#         /lib64/libmars-service_jni.so
+#         /lib64/libmars-service.so
+#         /lib64/libmars-featureclient.so
+#         /lib64/libmars-audioparams.so
+#         /lib64/libvcode_nc.so
+  file_check_system
+fi
 if [ "$LIST32BIT" ]; then
   FILES="/lib/libthemeicon_vivolog.so
          /lib/libthemeicon.so"
