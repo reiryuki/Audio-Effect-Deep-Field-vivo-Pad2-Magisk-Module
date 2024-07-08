@@ -56,43 +56,25 @@ else
 fi
 ui_print " "
 
-# bit
-if [ "$IS64BIT" == true ]; then
-  ui_print "- 64 bit architecture"
-  ui_print " "
-  if [ "$LIST32BIT" ]; then
-    ui_print "- 32 bit library support"
-  else
-    ui_print "- Doesn't support 32 bit library"
-    rm -rf $MODPATH/armeabi-v7a $MODPATH/x86\
-     $MODPATH/system*/lib $MODPATH/system*/vendor/lib
-  fi
-  ui_print " "
-else
-  ui_print "- 32 bit architecture"
-  rm -rf `find $MODPATH -type d -name *64*`
-  ui_print " "
-fi
-
 # architecture
-ui_print "- $ARCH architecture"
-ui_print " "
-FILE=$MODPATH/service.sh
-if [ "`grep_prop vafx.ea $OPTIONALS`" == 0 ]; then
-  ui_print "- Does not use Ear-customized sound effects"
-  sed -i -e 's|vafxea_get_switch 1|vafxea_get_switch -1|g'\
-   -e 's|vafxea_get_switch 0|vafxea_get_switch -1|g' $FILE
+if [ "$ARCH" == arm64 ]; then
+  ui_print "- $ARCH architecture"
   ui_print " "
 else
-  if [ "$ARCH" != arm64 ]; then
-    ui_print "- Ear-customized sound effects is unsupported"
-    ui_print "  in non-arm64 architecture"
-    sed -i -e 's|vafxea_get_switch 1|vafxea_get_switch -1|g'\
-     -e 's|vafxea_get_switch 0|vafxea_get_switch -1|g' $FILE
-    ui_print " "
-  fi
+  ui_print "! Unsupported $ARCH architecture."
+  ui_print "  This module is only for arm64 architecture."
+  abort
 fi
 
+# bit
+if [ "$LIST32BIT" ]; then
+  ui_print "- 32 bit library support"
+else
+  ui_print "- Doesn't support 32 bit library"
+  rm -rf $MODPATH/armeabi-v7a $MODPATH/x86\
+   $MODPATH/system*/lib $MODPATH/system*/vendor/lib
+fi
+ui_print " "
 
 # sdk
 NUM=24

@@ -18,6 +18,7 @@
 - https://t.me/androidryukimods/2236
 
 ## Requirements
+- ARM64 architecture
 - Android 7 and up
 - Magisk or KernelSU installed
 
