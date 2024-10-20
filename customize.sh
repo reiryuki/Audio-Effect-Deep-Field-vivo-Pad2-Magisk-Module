@@ -3,9 +3,17 @@ ui_print " "
 
 # var
 UID=`id -u`
-LIST32BIT=`grep_get_prop ro.product.cpu.abilist32`
-if [ ! "$LIST32BIT" ]; then
-  LIST32BIT=`grep_get_prop ro.system.product.cpu.abilist32`
+[ ! "$UID" ] && UID=0
+ABILIST=`grep_get_prop ro.product.cpu.abilist`
+if [ ! "$ABILIST" ]; then
+  ABILIST=`grep_get_prop ro.system.product.cpu.abilist`
+fi
+ABILIST32=`grep_get_prop ro.product.cpu.abilist32`
+if [ ! "$ABILIST32" ]; then
+  ABILIST32=`grep_get_prop ro.system.product.cpu.abilist32`
+fi
+if [ ! "$ABILIST32" ]; then
+  [ -f /system/lib/libandroid.so ] && ABILIST32=true
 fi
 
 # log
@@ -57,24 +65,30 @@ fi
 ui_print " "
 
 # architecture
-if [ "$ARCH" == arm64 ]; then
-  ui_print "- $ARCH architecture"
+if [ "$ABILIST" ]; then
+  ui_print "- $ABILIST architecture"
   ui_print " "
-else
-  ui_print "! Unsupported $ARCH architecture."
-  ui_print "  This module is only for arm64 architecture."
+fi
+NAME=arm64-v8a
+NAME2=armeabi-v7a
+if ! echo "$ABILIST" | grep -q $NAME; then
+  if [ "$BOOTMODE" == true ]; then
+    ui_print "! This ROM doesn't support $NAME architecture"
+  else
+    ui_print "! This Recovery doesn't support $NAME architecture"
+    ui_print "  Try to install via Magisk app instead"
+  fi
   abort
 fi
-
-# bit
-if [ "$LIST32BIT" ]; then
-  ui_print "- 32 bit library support"
-else
-  ui_print "- Doesn't support 32 bit library"
-  rm -rf $MODPATH/armeabi-v7a $MODPATH/x86\
-   $MODPATH/system*/lib $MODPATH/system*/vendor/lib
+if ! echo "$ABILIST" | grep -q $NAME2; then
+  rm -rf $MODPATH/system*/lib\
+   $MODPATH/system*/vendor/lib
+  if [ "$BOOTMODE" != true ]; then
+    ui_print "! This Recovery doesn't support $NAME2 architecture"
+    ui_print "  Try to install via Magisk app instead"
+    ui_print " "
+  fi
 fi
-ui_print " "
 
 # sdk
 NUM=24
@@ -166,7 +180,7 @@ if [ "`grep_prop data.cleanup $OPTIONALS`" == 1 ]; then
   ui_print " "
 elif [ -d $DIR ]\
 && [ "$PREVMODNAME" != "$MODNAME" ]; then
-  ui_print "- Different version detected"
+  ui_print "- Different module name is detected"
   ui_print "  Cleaning-up $MODID data..."
   cleanup
   ui_print " "
@@ -220,7 +234,7 @@ for APP in $APPS; do
 done
 }
 replace_dir() {
-if [ -d $DIR ]; then
+if [ -d $DIR ] && [ ! -d $MODPATH$MODDIR ]; then
   REPLACE="$REPLACE $MODDIR"
 fi
 }
@@ -263,26 +277,24 @@ done
 }
 
 # hide
-APPS="`ls $MODPATH/system/priv-app` `ls $MODPATH/system/app`"
+APPS="`ls $MODPATH/system/priv-app`
+      `ls $MODPATH/system/app`"
 hide_oat
-APPS=MusicFX
+APPS="$APPS MusicFX"
 hide_app
 
 # function
 file_check_system() {
 for FILE in $FILES; do
-  DES=$SYSTEM$FILE
-  if [ -f $DES ]; then
-    ui_print "- Detected $DES"
-    ui_print " "
-    rm -f $MODPATH/system$FILE
-  fi
-  DES=$SYSTEM_EXT$FILE
-  if [ -f $DES ]; then
-    ui_print "- Detected $DES"
-    ui_print " "
-    rm -f $MODPATH/system$FILE
-  fi
+  DESS="$SYSTEM$FILE $SYSTEM_EXT$FILE"
+  for DES in $DESS; do
+    if [ -f $DES ]; then
+      ui_print "- Detected"
+      ui_print "$DES"
+      rm -f $MODPATH/system$FILE
+      ui_print " "
+    fi
+  done
 done
 }
 
@@ -299,7 +311,7 @@ if [ "$IS64BIT" == true ]; then
 #         /lib64/libvcode_nc.so
   file_check_system
 fi
-if [ "$LIST32BIT" ]; then
+if [ "$ABILIST32" ]; then
   FILES="/lib/libthemeicon_vivolog.so
          /lib/libthemeicon.so"
 #         /lib/libmars-service_jni.so
@@ -439,7 +451,7 @@ fi
 # raw
 FILE=$MODPATH/.aml.sh
 if [ "`grep_prop disable.raw $OPTIONALS`" == 0 ]; then
-  ui_print "- Does not disable Ultra Low Latency playback (RAW)"
+  ui_print "- Does not disable Ultra Low Latency (Raw) playback"
   ui_print " "
 else
   sed -i 's|#u||g' $FILE
