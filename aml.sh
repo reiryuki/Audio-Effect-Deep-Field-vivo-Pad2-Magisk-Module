@@ -368,11 +368,21 @@ if [ "$ARCHDIR" ]; then
     remove_conf
     sed -i "/^libraries {/a\  $LIBNAME {\n    path \\$libdir\\$ARCHDIR\/soundfx\/$LIB\n  }" $MODAEC
     sed -i "/^effects {/a\  $NAME {\n    library $LIBNAME\n    uuid $UUID\n  }" $MODAEC
+#z    sed -i "/^    voice_call {/a\        $NAME {\n        }" $MODAEC
+#z    sed -i "/^    tts {/a\        $NAME {\n        }" $MODAEC
+#z    sed -i "/^    accessibility {/a\        $NAME {\n        }" $MODAEC
+#z    sed -i "/^    assistant {/a\        $NAME {\n        }" $MODAEC
+#z    sed -i "/^    call_assistant {/a\        $NAME {\n        }" $MODAEC
   done
   for MODAEX in $MODAEXS; do
     remove_xml
     sed -i "/<libraries>/a\        <library name=\"$LIBNAME\" path=\"$LIB\"\/>" $MODAEX
     sed -i "/<effects>/a\        <effect name=\"$NAME\" library=\"$LIBNAME\" uuid=\"$UUID\"\/>" $MODAEX
+#z    sed -i "/<stream type=\"voice_call\">/a\            <apply effect=\"$NAME\"\/>" $MODAEX
+#z    sed -i "/<stream type=\"tts\">/a\            <apply effect=\"$NAME\"\/>" $MODAEX
+#z    sed -i "/<stream type=\"accessibility\">/a\            <apply effect=\"$NAME\"\/>" $MODAEX
+#z    sed -i "/<stream type=\"assistant\">/a\            <apply effect=\"$NAME\"\/>" $MODAEX
+#z    sed -i "/<stream type=\"call_assistant\">/a\            <apply effect=\"$NAME\"\/>" $MODAEX
   done
 fi
 
@@ -388,13 +398,21 @@ if [ "$ARCHDIR" ]; then
     remove_conf
     sed -i "/^libraries {/a\  $LIBNAME {\n    path \\$libdir\\$ARCHDIR\/soundfx\/$LIB\n  }" $MODAEC
     sed -i "/^effects {/a\  $NAME {\n    library $LIBNAME\n    uuid $UUID\n  }" $MODAEC
-#h    sed -i "/^    voice_call {/a\        $NAME {\n        }" $MODAEC
+#z    sed -i "/^    voice_call {/a\        $NAME {\n        }" $MODAEC
+#z    sed -i "/^    tts {/a\        $NAME {\n        }" $MODAEC
+#z    sed -i "/^    accessibility {/a\        $NAME {\n        }" $MODAEC
+#z    sed -i "/^    assistant {/a\        $NAME {\n        }" $MODAEC
+#z    sed -i "/^    call_assistant {/a\        $NAME {\n        }" $MODAEC
   done
   for MODAEX in $MODAEXS; do
     remove_xml
     sed -i "/<libraries>/a\        <library name=\"$LIBNAME\" path=\"$LIB\"\/>" $MODAEX
     sed -i "/<effects>/a\        <effect name=\"$NAME\" library=\"$LIBNAME\" uuid=\"$UUID\"\/>" $MODAEX
-#h    sed -i "/<stream type=\"voice_call\">/a\            <apply effect=\"$NAME\"\/>" $MODAEX
+#z    sed -i "/<stream type=\"voice_call\">/a\            <apply effect=\"$NAME\"\/>" $MODAEX
+#z    sed -i "/<stream type=\"tts\">/a\            <apply effect=\"$NAME\"\/>" $MODAEX
+#z    sed -i "/<stream type=\"accessibility\">/a\            <apply effect=\"$NAME\"\/>" $MODAEX
+#z    sed -i "/<stream type=\"assistant\">/a\            <apply effect=\"$NAME\"\/>" $MODAEX
+#z    sed -i "/<stream type=\"call_assistant\">/a\            <apply effect=\"$NAME\"\/>" $MODAEX
   done
 fi
 

@@ -412,20 +412,24 @@ if echo "$PROP" | grep -q g; then
   sed -i 's|#g||g' $FILE
   ui_print " "
 fi
-if [ "`grep_prop vafx.voice $OPTIONALS`" != 0 ]; then
-  ui_print "- libvoicegain.so will be applied to voice_call stream"
-  sed -i 's|#h||g' $FILE
+if [ "`grep_prop vafx.voice $OPTIONALS`" == 0 ]; then
+  ui_print "- Does not apply libvafxvcp.so & libvoicegain.so to"
+  ui_print "  voice_call, tts, accesibilty, assistant, & call_assistant"
+  ui_print "  stream"
   ui_print " "
 else
-  ui_print "- Does not apply libvoicegain.so to voice_call stream"
+  ui_print "- libvafxvcp.so and libvoicegain.so will be applied to"
+  ui_print "  voice_call, tts, accesibilty, assistant, & call_assistant"
+  ui_print "  stream"
+  sed -i 's|#z||g' $FILE
   ui_print " "
 fi
-if [ "`grep_prop vafx.game $OPTIONALS`" != 0 ]; then
-  ui_print "- libvafx_gfx.so will be applied to rerouting & patch stream"
-  sed -i 's|#x||g' $FILE
+if [ "`grep_prop vafx.game $OPTIONALS`" == 0 ]; then
+  ui_print "- Does not apply libvafx_gfx.so to rerouting & patch stream"
   ui_print " "
 else
-  ui_print "- Does not apply libvafx_gfx.so to rerouting & patch stream"
+  ui_print "- libvafx_gfx.so will be applied to rerouting & patch stream"
+  sed -i 's|#x||g' $FILE
   ui_print " "
 fi
 
