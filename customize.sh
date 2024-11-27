@@ -414,12 +414,12 @@ if echo "$PROP" | grep -q g; then
 fi
 if [ "`grep_prop vafx.voice $OPTIONALS`" == 0 ]; then
   ui_print "- Does not apply libvafxvcp.so & libvoicegain.so to"
-  ui_print "  voice_call, tts, accesibilty, assistant, & call_assistant"
+  ui_print "  voice_call, tts, accessibility, assistant, & call_assistant"
   ui_print "  stream"
   ui_print " "
 else
   ui_print "- libvafxvcp.so and libvoicegain.so will be applied to"
-  ui_print "  voice_call, tts, accesibilty, assistant, & call_assistant"
+  ui_print "  voice_call, tts, accessibility, assistant, & call_assistant"
   ui_print "  stream"
   sed -i 's|#z||g' $FILE
   ui_print " "

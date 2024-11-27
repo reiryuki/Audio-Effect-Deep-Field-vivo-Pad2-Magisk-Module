@@ -8,7 +8,7 @@
 - Music sound effect equalizer ported from vivo Pad2 (DPD2221) and integrated as a Magisk Module for all supported and rooted devices with Magisk
 - Global type sound effect
 - Improves game apps sound also with libvafx_gfx.so
-- Improves voice call, tts, accesibilty, assistant, & call assistant sound also with libvafxvcp.so and libvoicegain.so
+- Improves voice call, tts, accessibility, assistant, & call assistant sound also with libvafxvcp.so and libvoicegain.so
 - libvafx_cc_sfx.so, libvafx_spacefx.so, & libvafx_spkr_sfx.so can only be activated with post process stream mode (READ Optionals bellow!)
 
 ## Sources
