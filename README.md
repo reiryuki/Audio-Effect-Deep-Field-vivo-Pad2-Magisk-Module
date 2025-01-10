@@ -8,8 +8,8 @@
 - Music sound effect equalizer ported from vivo Pad2 (DPD2221) and integrated as a Magisk Module for all supported and rooted devices with Magisk
 - Global type sound effect
 - Improves game apps sound also with libvafx_gfx.so
-- Improves voice call, tts, accessibility, assistant, & call assistant sound also with libvafxvcp.so and libvoicegain.so
-- libvafx_cc_sfx.so, libvafx_spacefx.so, & libvafx_spkr_sfx.so can only be activated with post process stream mode (READ Optionals bellow!)
+- Volume gain for voice call, tts, accessibility, assistant, & call assistant sound with libvoicegain.so (READ Optionals bellow to activate! But I don't recommend to activate it because the volume gain is too high.)
+- libvafx_cc_sfx.so, libvafx_spacefx.so, libvafx_spkr_sfx.so, & libvafxvcp.so can only be activated with post process stream mode (READ Optionals bellow!)
 
 ## Sources
 - https://dumps.tadiphone.dev/dumps/vivo/dpd2221 sys_mssi_t_64_cn_armv82_wifi-user-13-TP1A.220624.014-eng.compil.20240306.211224-release-keys
@@ -20,7 +20,7 @@
 
 ## Requirements
 - arm64-v8a architecture
-- Android 7 (SDK 24) and up
+- Android 7.0 (SDK 24) and up
 - Magisk or KernelSU installed
 - Earphone/headphone connected
 
