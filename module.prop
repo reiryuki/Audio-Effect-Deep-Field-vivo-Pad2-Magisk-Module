@@ -1,7 +1,7 @@
 id=AudioEffect
 name=Audio Effect Deep Field vivo Pad2
-version=v1.1
-versionCode=11
+version=v1.2
+versionCode=12
 author=Rei Ryuki the Fixer
 description=Equalizer global type sound effect ported from vivo Pad2 (DPD2221) for any arm64-v8a architecture, Android 7 (SDK 24) and up.
 

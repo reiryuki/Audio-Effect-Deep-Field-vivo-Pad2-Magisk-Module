@@ -108,36 +108,49 @@ settings put global vafxea_get_switch 1
 
 # grant
 PKG=com.vivo.audiofx
-pm grant $PKG android.permission.RECORD_AUDIO
-pm grant $PKG android.permission.READ_PHONE_STATE
-pm grant $PKG android.permission.READ_EXTERNAL_STORAGE
-pm grant $PKG android.permission.WRITE_EXTERNAL_STORAGE
-appops set $PKG WRITE_SETTINGS allow
-appops set $PKG SYSTEM_ALERT_WINDOW allow
-if [ "$API" -ge 30 ]; then
-  appops set $PKG AUTO_REVOKE_PERMISSIONS_IF_UNUSED ignore
-fi
-if [ "$API" -ge 33 ]; then
-  appops set $PKG ACCESS_RESTRICTED_SETTINGS allow
-fi
-PKGOPS=`appops get $PKG`
-UID=`dumpsys package $PKG 2>/dev/null | grep -m 1 Id= | sed -e 's|    userId=||g' -e 's|    appId=||g'`
-if [ "$UID" ] && [ "$UID" -gt 9999 ]; then
-  UIDOPS=`appops get --uid "$UID"`
+if appops get $PKG > /dev/null 2>&1; then
+  pm grant --all-permissions $PKG
+  appops set $PKG WRITE_SETTINGS allow
+  appops set $PKG SYSTEM_ALERT_WINDOW allow
+  if [ "$API" -ge 30 ]; then
+    appops set $PKG AUTO_REVOKE_PERMISSIONS_IF_UNUSED ignore
+  fi
+  if [ "$API" -ge 33 ]; then
+    appops set $PKG ACCESS_RESTRICTED_SETTINGS allow
+  fi
+  PKGOPS=`appops get $PKG`
+  UID=`dumpsys package $PKG 2>/dev/null | grep -m 1 Id= | sed -e 's|    userId=||g' -e 's|    appId=||g'`
+  if [ "$UID" ] && [ "$UID" -gt 9999 ]; then
+    UIDOPS=`appops get --uid "$UID"`
+  fi
 fi
 
 # allow
 PKG=com.vivo
-if [ "$API" -ge 33 ]; then
-  appops set $PKG ACCESS_RESTRICTED_SETTINGS allow
+if appops get $PKG > /dev/null 2>&1; then
+  if [ "$API" -ge 33 ]; then
+    appops set $PKG ACCESS_RESTRICTED_SETTINGS allow
+  fi
+  PKGOPS=`appops get $PKG`
+  UID=`dumpsys package $PKG 2>/dev/null | grep -m 1 Id= | sed -e 's|    userId=||g' -e 's|    appId=||g'`
+  if [ "$UID" ] && [ "$UID" -gt 9999 ]; then
+    UIDOPS=`appops get --uid "$UID"`
+  fi
 fi
 
-# grant
+# allow
 PKG=com.reiryuki.vafx
-appops set $PKG SYSTEM_ALERT_WINDOW allow
-if [ "$API" -ge 33 ]; then
-  pm revoke $PKG android.permission.POST_NOTIFICATIONS
-  appops set $PKG ACCESS_RESTRICTED_SETTINGS allow
+if appops get $PKG > /dev/null 2>&1; then
+  appops set $PKG SYSTEM_ALERT_WINDOW allow
+  if [ "$API" -ge 33 ]; then
+    pm revoke $PKG android.permission.POST_NOTIFICATIONS
+    appops set $PKG ACCESS_RESTRICTED_SETTINGS allow
+  fi
+  PKGOPS=`appops get $PKG`
+  UID=`dumpsys package $PKG 2>/dev/null | grep -m 1 Id= | sed -e 's|    userId=||g' -e 's|    appId=||g'`
+  if [ "$UID" ] && [ "$UID" -gt 9999 ]; then
+    UIDOPS=`appops get --uid "$UID"`
+  fi
 fi
 
 # audio flinger
