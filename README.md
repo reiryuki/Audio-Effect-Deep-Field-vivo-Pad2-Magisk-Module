@@ -21,25 +21,25 @@
 ## Requirements
 - arm64-v8a architecture
 - Android 7.0 (SDK 24) and up
-- Magisk or KernelSU installed
+- Magisk or Kitsune Mask or KernelSU or Apatch installed
 - Earphone/headphone connected
 
 ## Installation Guide & Download Link
-- Install this module https://www.pling.com/p/2161324/ via Magisk app or KernelSU app or Recovery if Magisk installed
+- Install this module https://www.pling.com/p/2161324/ via Magisk app or Kitsune Mask app or KernelSU app or Apatch app or Recovery if Magisk or Kitsune Mask installed
 - Install AML Magisk Module https://t.me/ryukinotes/34 only if using any other else audio mod module
 - If you are using KernelSU, you need to disable Unmount Modules by Default in KernelSU app settings
 - Reboot
 - If you are using KernelSU, you need to allow superuser list manually all package name listed in package.txt (and your home launcher app also) (enable show system apps) and reboot afterwards
 - If you are using SUList, you need to allow list manually your home launcher app (enable show system apps) and reboot afterwards
 - Connect your earphone/headphone
-- Play music first and open Audio Effect app via Equalizer option in your Music app settings
-- OR you can play music first then open and grant root VAFX app instead
+- Play music first then open and grant root VAFX app
 - OR you can also type this command at Terminal/Termux app instead while playing music:
 
   `su`
   
   `vafx`
 
+- If it triggers integrity failure in your ROM then you can use Xperia Music instead: https://github.com/reiryuki/Xperia-Music-Magisk-Module and choose Sound effects in the app
 
 ## Optionals
 - https://t.me/ryukinotes/51
