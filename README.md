@@ -18,6 +18,46 @@
 ## Screenshots
 - https://t.me/androidryukimods/2236
 
+## Changelog
+
+v1.6
+- Does not disable raw playback (You can use Audio Compatibility Patch Reborn Magisk Module instead)
+
+v1.5
+- Fix wrong target in latest KernelSU
+
+v1.4
+- Tidy up aml.sh
+- Exclude audioeffectshaptic.xml
+- Abort installation if fail to mount mirror system
+- Fix wrong file permissions in some ROMs
+
+v1.3
+- Fix conflict with Play Integrity Fix Magisk Module in some devices
+
+v1.2
+- Fix vafx script failure in some ROMs
+- Improve /odm and /my_product support detection
+
+v1.1
+- Improve vafx script
+
+v1.0
+- Add $PKG:service at vafx command
+
+v0.9
+- Add Action button to clear apps caches
+- Fix architecture detection in some weird ROMs
+
+v0.8
+- Fix vafx command to handle more than one audio session in one process
+
+v0.7
+- Move VAFX.apk to priv-app
+- libvafxvcp.so for all stream mode (if activated in optional)
+- Does not apply libvoicegain.so by default
+- Fix bug in function.sh and uninstall.sh
+
 ## Requirements
 - arm64-v8a architecture
 - Android 7.0 (SDK 24) and up
@@ -27,7 +67,7 @@
 
 ## Installation Guide & Download Link
 - If you are using KernelSU, you need to disable Unmount Modules by Default in KernelSU app settings and install https://github.com/KernelSU-Modules-Repo/meta-overlayfs first
-- Install this module https://www.pling.com/p/2161324/ via Magisk app or Kitsune Mask app or KernelSU app or Apatch app or Recovery if Magisk or Kitsune Mask installed
+- Install this module via Magisk app or Kitsune Mask app or KernelSU app or Apatch app or Recovery if Magisk or Kitsune Mask installed
 - Install AML Magisk Module https://t.me/ryukinotes/34 only if using any other else audio mod module
 - Reboot
 - If you are using KernelSU, you need to allow superuser list manually all package name listed in package.txt (and your home launcher app also) (enable show system apps) and reboot afterwards
