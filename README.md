@@ -13,12 +13,14 @@
 
 ## Sources
 - https://dumps.tadiphone.dev/dumps/vivo/dpd2221 sys_mssi_t_64_cn_armv82_wifi-user-13-TP1A.220624.014-eng.compil.20240306.211224-release-keys
-- libmagiskpolicy.so: Kitsune Mask R6687BB53
-
-## Screenshots
-- https://t.me/androidryukimods/2236
+- libmagiskpolicy.so: Magisk (stable) 30.7 (30700)
 
 ## Changelog
+
+v1.7
+- Support NoMount metamodule
+- Update libmagiskpolicy.so from Magisk (stable) 30.7 (30700)
+- Move _uninstall.log to /data/adb/logs/
 
 v1.6
 - Does not disable raw playback (You can use Audio Compatibility Patch Reborn Magisk Module instead)
@@ -28,7 +30,7 @@ v1.5
 
 v1.4
 - Tidy up aml.sh
-- Exclude audioeffectshaptic.xml
+- Exclude \*audio\*effects\*haptic\*.xml
 - Abort installation if fail to mount mirror system
 - Fix wrong file permissions in some ROMs
 
@@ -52,11 +54,8 @@ v0.9
 v0.8
 - Fix vafx command to handle more than one audio session in one process
 
-v0.7
-- Move VAFX.apk to priv-app
-- libvafxvcp.so for all stream mode (if activated in optional)
-- Does not apply libvoicegain.so by default
-- Fix bug in function.sh and uninstall.sh
+## Screenshots
+https://t.me/androidryukimods/2236
 
 ## Requirements
 - arm64-v8a architecture
@@ -66,8 +65,8 @@ v0.7
 - Earphone/headphone connected
 
 ## Installation Guide & Download Link
-- If you are using KernelSU, you need to disable Unmount Modules by Default in KernelSU app settings and install https://github.com/KernelSU-Modules-Repo/meta-overlayfs first
-- Install this module https://devuploads.com/iikbqk5cy905 via Magisk app or Kitsune Mask app or KernelSU app or Apatch app or Recovery if Magisk or Kitsune Mask installed
+- If you are using KernelSU, you need to disable Unmount Modules by Default in KernelSU app settings and install https://github.com/KernelSU-Modules-Repo/meta-overlayfs or https://github.com/KernelSU-Modules-Repo/magic_mount_rs or https://github.com/KernelSU-Modules-Repo/hybrid_mount or https://github.com/maxsteeel/nomount first depending on ROM compatibility
+- Install this module via Magisk app or Kitsune Mask app or KernelSU app or Apatch app or Recovery if Magisk or Kitsune Mask installed
 - Install AML Magisk Module https://t.me/ryukinotes/34 only if using any other else audio mod module
 - Reboot
 - If you are using KernelSU, you need to allow superuser list manually all package name listed in package.txt (and your home launcher app also) (enable show system apps) and reboot afterwards
@@ -102,6 +101,6 @@ v0.7
 - You can contribute ideas about this Magisk Module here: https://t.me/androidappsportdevelopment
 
 ## Sponsors
-- https://t.me/ryukinotes/25
+https://t.me/ryukinotes/25
 
 
